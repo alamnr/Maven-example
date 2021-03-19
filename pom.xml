@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
 
-<build>
-	<sourceDirectory>src/nonstandard/java</sourceDirectory>
-	<directory>myTarget</directory>
-</build>
+
 
 <modelVersion>4.0.0</modelVersion>
 <artifactId>maven-example</artifactId>
 <groupId>com.infiniteskill.mavan</groupId>
 <version>1.0.0</version>
+
+
 
 <name>Learning Maven Example</name>
 <description>This is a project used to demonstrate maven principles</description>
@@ -33,4 +32,24 @@
 		<email>kevin.bowersox@gmail.com</email>
 	</developer>
 </developers>
+
+<build>
+	<directory>target/dev</directory>
+</build>
+
+<profiles>
+	<profile>
+		<id>prod</id>
+		<activation>
+			<property>
+				<name>env.PACKAGE_ENV</name>
+				<value>PROD</value>
+				
+			</property>
+		</activation>
+		<build>
+			<directory>target/prod/</directory>
+		</build>
+	</profile>
+</profiles>
 </project>
